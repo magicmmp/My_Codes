@@ -1,0 +1,13 @@
+Pafesew
+P 0x1  1
+GRST 0xa 10  0x1  1  0x0fd 253
+GW   0 0x00
+CW  0 0  0x40  64
+TPEnG 0 0X0 0x1 1
+  TP 0  0  0  0   1 0x1
+SRst 0 0
+ DRst   0xfF0a18 16714264 0Xfdff0a18 4261349912 
+DSTART  1  1
+Q
+DPGftrQ 0x3456 13398  0XF5  245 26 0x1a 
+DSEWWnjyuyyGGpss
