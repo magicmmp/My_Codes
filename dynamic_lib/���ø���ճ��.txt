@@ -1,0 +1,39 @@
+Linux系统中“动态库”和“静态库”那点事儿【转】 
+https://www.cnblogs.com/sky-heaven/p/5918139.html
+Msg  /home/gumh/taskrouter-work/taskrouter/common/msg/src/MultipleBufferManager.cxx 
+cd /usr/include/rdma/
+cd /usr/include/infiniband/
+g++  rnettest.cc -lpthread -lrdmacm -o rnettest
+gcc  rclient.c -lrdmacm -o rclient
+g++  rserver4.c -lrdmacm -o rserver4
+g++  rclient4.c -lrdmacm -o rclient4
+./rclient5 192.168.251.163
+cd /bes/daq/tdaq/tdaq-01-08-04/installed/databases/daq/partitions/
+里面既有server端又有client端。
+编译： g++  nettest.cc -lpthread -o nettest
+使用：
+[zengtx@cmm03node01 nettest]$./nettest --help
+Useage: 
+  nettest [-c|-s] [-m 1|2|3|4] [-a IP] [-p port] 
+
+          [--start startPackageSize]
+
+          [--end startPackageSize]
+
+          [--step stepPackageSize]
+
+          [--time timePerPoint]
+
+          [--traveltimes travelTimes]
+
+          [--pkgsize packageSize]
+
+          [--udp 0|1]
+-m: TCP: 1, server send first; 2, client send first; 3, delay server send first ...
+
+     UDP: 0|1, baund width; 3|4, traffic delay 
+
+ --udp: 0, for server; 1 for client
+
+LD_PRELOAD=/usr/lib64/libsdp.so myapplication
+
