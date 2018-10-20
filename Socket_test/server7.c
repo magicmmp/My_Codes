@@ -85,7 +85,7 @@ int main(int argc, char** argv)
     break;
     n=n*2;
     }
-    delete []buf;
+	delete []buf;
     close(connect_fd);
     close(socket_fd);
 }
