@@ -30,13 +30,18 @@ int main(int argc, char** argv)
 	sprintf(add_buff,"Oh,I am a server of BaiduYun.");
 	while(1)
 	{
-		recv_len = recvfrom(sockfd, buff, bufflen, 0, (struct sockaddr *)&cliaddr, &addr_len);
 		int i;
+		for(i=0;i<sizeof(buff);i++)
+			buff[i]=0;
+		recv_len = recvfrom(sockfd, buff, bufflen, 0, (struct sockaddr *)&cliaddr, &addr_len);
+		if(recv_len>0)
+			printf("receive msg   :  %s   from:%s,port:%d\n",buff,inet_ntoa(cliaddr.sin_addr),cliaddr.sin_port);
 		for(i=0;i<sizeof(add_buff);i++)
 			buff[recv_len+i]=add_buff[i];
 		if( recv_len > 0 )
+		{
 			sendto(sockfd, buff, recv_len+32, 0, (struct sockaddr *)&cliaddr, addr_len);		 	
-
+		}
 	}
 	return 0;
 }

@@ -15,10 +15,12 @@ int main(int argc, char** argv) {
     struct sockaddr_in address;
     bzero(&address,sizeof(address));  
     address.sin_family=AF_INET;
-	printf("please input a server IP:\n");  
-	char ipbuff[24];
-	gets(ipbuff);
-    address.sin_addr.s_addr=inet_addr(ipbuff);
+	if(argc !=2)
+	{
+		printf("You should input the remote echo server IP.\n");
+		return -1;
+	}
+    address.sin_addr.s_addr=inet_addr(argv[1]);
     address.sin_port=htons(port);  
     socket_descriptor=socket(AF_INET,SOCK_DGRAM,0);
     sendto(socket_descriptor,buf,sizeof(buf),0,(struct sockaddr *)&address,sizeof(address));
@@ -29,6 +31,6 @@ int main(int argc, char** argv) {
     close(socket_descriptor);  
     printf("exit.\n");  
     exit(0);  
-    return ;  
+    return 0;  
 }  
 
